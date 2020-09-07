@@ -1,0 +1,23 @@
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+  <div class="wrapper">
+    <div class="game shadow p-4">
+      <h1>New game</h1>
+        <% rand_letters = @letters.each do |letter| %>
+        <div class="letters">
+          <p><%= letter %></p>
+        </div>
+        <% end %>
+
+      <p class="mt-4 mb-0">What is the longest word you can find?</p>
+      <form class="d-flex align-items-center justify-content-between" action="/score" method="POST">
+        <input type="text" name="word" class="input p-1">
+        <input type="submit" value="Play" class="btn btn-primary">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :letters, @letters %>
+      </form>
+    </div>
+  </div>
+
